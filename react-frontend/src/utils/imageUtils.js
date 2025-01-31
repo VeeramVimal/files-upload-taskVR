@@ -1,0 +1,1 @@
+export const ImagePath = (path) => { return require(`../assets/${path}`)}
