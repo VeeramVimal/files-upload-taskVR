@@ -1,15 +1,16 @@
 const express = require("express");
-const authController = require("../controller/auth.controller");
-
+const authRoute = require("./auth.route")
 const router = express.Router();
 
-router.route("/login").get((req, res) => {
-    console.log("asdfasdfas");
-    res.send({ msg: "hi dude"})
+const defaultRoutes  = [
+    {
+        path: "/auth",
+        route: authRoute
+    }
+];
+
+defaultRoutes.forEach((route) => {
+    router.use(route.path, route.route)
 });
-
-router.route("/create").post(authController.userCreate);
-router.route("/login").post(authController.userLogin);
-
 
 module.exports = router;
